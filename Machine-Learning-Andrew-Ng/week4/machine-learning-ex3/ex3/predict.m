@@ -28,7 +28,9 @@ p = zeros(size(X, 1), 1);
 % the 10 h only has 1 h predicted as 1, rest are 0
 % take the index of the 1, that's the prediction
 
-
+disp(size(Theta1))
+disp(size(Theta2))
+disp(size(X))
 
 % fill x0 to 1 first
 x0 = ones(m,1);
