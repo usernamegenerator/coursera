@@ -57,7 +57,6 @@ class KosarajuSCC
 private:
     vector<list<int>> graph;
     vector<list<int>> graph_reverse;
-    bool marked[];
     int graphSize;
     vector<list<int>> reverseGraph(vector<list<int>> graph);
     vector<list<int>> buildGraphFromtxt(string filename);
@@ -74,7 +73,7 @@ KosarajuSCC::KosarajuSCC(string filename)
     this->graph = buildGraphFromtxt(filename);
     this->graphSize = this->graph.size();
 
-    printGraph(graph);
+    //printGraph(graph);
 
     // 1. compute G_reverse
     graph_reverse = reverseGraph(graph);
@@ -213,7 +212,7 @@ vector<list<int>> KosarajuSCC::buildGraphFromtxt(string filename)
         u = stoi(u_str);
         v = stoi(v_str);
     }
-    //cout << u << endl;
+    // cout << u << endl;
     // u means the last node, so it's how many nodes in the txt
     vector<list<int>> graph(u);
 
@@ -223,20 +222,13 @@ vector<list<int>> KosarajuSCC::buildGraphFromtxt(string filename)
     while (getline(fin, line))
     {
         stringstream ss(line);
-        cout << "line" << line << endl;
         ss >> u_str;
-        cout << u_str << endl;
         ss >> v_str;
-        cout << v_str << endl;
-        u = stoi(u_str) - 1;
-        cout << u << endl;
+        u = stoi(u_str) - 1;        
         v = stoi(v_str) - 1;
-        cout << v << endl;
-        cout << u << "->" << v << " ";
         graph[u].push_back(v);
-        cout << u << "->" << v << endl;
     }
-    printGraph(graph);
+    //printGraph(graph);
     return graph;
 }
 
@@ -264,9 +256,7 @@ int main()
     //KosarajuSCC k("33300.txt");
     //KosarajuSCC k("33200.txt");
     //KosarajuSCC k("63210.txt");
-    
-
-    KosarajuSCC k("33110.txt");
+    //KosarajuSCC k("33110.txt");
     //KosarajuSCC k("71000.txt");
     //KosarajuSCC k("SCC.txt");
 }
