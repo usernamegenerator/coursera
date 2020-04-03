@@ -289,7 +289,7 @@ double MedianMaintenance(minHeap &higher, maxHeap &lower, int x)
         }
 
         // now it's balanced even number
-        
+
         // note the homework requires the median to be (k+1)/2 th element, rather than the math calculation
         // curMedian = (lower.top() + higher.top()) / 2.0;
         curMedian = lower.top();
@@ -305,7 +305,6 @@ double MedianMaintenance(minHeap &higher, maxHeap &lower, int x)
         if (x < lower.top())
         {
             lower.insert(x);
-            curMedian = lower.top();
         }
 
         // if x is greater than the highertop, meaning don't need to take x into account
@@ -319,7 +318,6 @@ double MedianMaintenance(minHeap &higher, maxHeap &lower, int x)
             higher.insert(x);
             lower.insert(higher.top());
             higher.pop();
-            curMedian = lower.top();
         }
 
         // if x is in between lowertop and highertop, meaning x is the median
@@ -328,8 +326,8 @@ double MedianMaintenance(minHeap &higher, maxHeap &lower, int x)
         {
             // insert x to lowertop
             lower.insert(x);
-            curMedian = lower.top();
         }
+        curMedian = lower.top();
     }
     cout << "adding number " << x << endl;
     cout << "MaxHeap lower: ";
