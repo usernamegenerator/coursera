@@ -75,7 +75,10 @@ void Dijkstra(vector<list<pair<int, int>>> graph)
         distToStart[i] = INT_MAX;
     }
     // priority_queue stores all the adjacent to the visited nodes
-    priority_queue<pair<int, int>> pq;
+    // <ThisNodeDistancetoStart,ThisNode>
+
+    //priority_queue<pair<int, int>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
     // start from vertex 0, distance is 0;
     pq.push(make_pair(0, 0));
@@ -134,10 +137,10 @@ void Dijkstra(vector<list<pair<int, int>>> graph)
 
 int main()
 {
-    vector<list<pair<int, int>>> graph = buildGraphFromFile("dijkstraData.txt");
+    //vector<list<pair<int, int>>> graph = buildGraphFromFile("dijkstraData.txt");
 
     //https://www.coursera.org/lecture/algorithms-part2/dijkstras-algorithm-2e9Ic
-    //vector<list<pair<int, int>>> graph = buildGraphFromFile("smalldijkstraData.txt");
+    vector<list<pair<int, int>>> graph = buildGraphFromFile("smalldijkstraData.txt");
 
     printGraph(graph);
     Dijkstra(graph);
